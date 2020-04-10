@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Project.Domin.Models;
 namespace Project.Data.Context
 {
-    class Pro_DBEntitis:DbContext
+   public class Pro_DBEntitis:DbContext
     {
         static Pro_DBEntitis()
         {
