@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Project.Domin.Models;
+using Project.Start.Models;
 namespace Project.Data.Context
 {
    public class Pro_DBEntitis:DbContext

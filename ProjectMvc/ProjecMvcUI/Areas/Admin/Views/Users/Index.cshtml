@@ -1,13 +1,20 @@
 ﻿@model IEnumerable<Project.Domin.Models.User>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "لیست کاربران";
 }
 
-<h2>Index</h2>
-
+    <div class="Title-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="title">مدیریت کاربران</span>
+                </div>
+            </div>
+        </div>
+    </div>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("ایجاد کاربر جدید", "Create")
 </p>
 <table class="table">
     <tr>
@@ -65,9 +72,8 @@
             @Html.DisplayFor(modelItem => item.RegisterDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UserID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
+            @Html.ActionLink("ویرایش", "Edit", new { id=item.UserID }) |
+            @Html.ActionLink("حذف", "Delete", new { id=item.UserID })
         </td>
     </tr>
 }
