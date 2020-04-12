@@ -6,15 +6,23 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Project.Data;
+using Project.Domin;
 using Project.Data.Context;
-using Project.Domin.Models;
 
 namespace ProjecMvcUI.Areas.Admin.Controllers
 {
     public class UsersController : Controller
     {
-        private Pro_DBEntitis db = new Pro_DBEntitis();
+       private Pro_DBEntitis db = new Pro_DBEntitis();
+       private IUserRepository userRepository;
+       private IRoleRepository roleRepository;
 
+        public UsersController()
+        {
+            userRepository = new UserRepository(db);
+            roleRepository = new RoleRepository(db);
+        }
         // GET: Admin/Users
         public ActionResult Index()
         {
@@ -22,45 +30,30 @@ namespace ProjecMvcUI.Areas.Admin.Controllers
             return View(users.ToList());
         }
 
-        // GET: Admin/Users/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
-
         // GET: Admin/Users/Create
-        public ActionResult Create()
-        {
-            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName");
-            return View();
-        }
+        //public ActionResult Create()
+        //{
+        //    ViewBag.RoleID = new SelectList(roleRepository.GetAllRole(), "RoleID", "RoleTitle");
+        //    return View();
+        //}
 
         // POST: Admin/Users/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserID,RoleID,UserName,Password,Email,PhonNumber,ActiveCode,IsActive,RegisterDate")] User user)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Users.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "UserID,RoleID,UserName,Password,Email,PhonNumber,ActiveCode,IsActive,RegisterDate")] User user)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Users.Add(user);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", user.RoleID);
-            return View(user);
-        }
+        //    ViewBag.RoleID = new SelectList(roleRepository.GetAllRole(), "RoleID", "RoleName", user.RoleID);
+        //    return View(user);
+        //}
 
         // GET: Admin/Users/Edit/5
         public ActionResult Edit(int? id)
@@ -69,12 +62,12 @@ namespace ProjecMvcUI.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            User user = userRepository.FindUserId(id.Value);
             if (user == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", user.RoleID);
+            ViewBag.RoleID = new SelectList(roleRepository.GetAllRole(), "RoleID", "RoleName", user.RoleID);
             return View(user);
         }
 
@@ -87,11 +80,11 @@ namespace ProjecMvcUI.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
+                userRepository.Update(user);
+                userRepository.save();
                 return RedirectToAction("Index");
             }
-            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", user.RoleID);
+            ViewBag.RoleID = new SelectList(roleRepository.GetAllRole(), "RoleID", "RoleName", user.RoleID);
             return View(user);
         }
 
@@ -102,24 +95,21 @@ namespace ProjecMvcUI.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
+            User user = userRepository.FindUserId(id.Value);
+            userRepository.Delete(user);
+            userRepository.save();
+            return RedirectToAction("Index");
+
+
         }
 
         // POST: Admin/Users/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+           
+        //}
 
         protected override void Dispose(bool disposing)
         {

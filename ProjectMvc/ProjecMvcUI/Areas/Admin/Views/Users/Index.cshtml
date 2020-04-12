@@ -1,14 +1,9 @@
-﻿@model IEnumerable<Project.Domin.Models.User>
+﻿@model IEnumerable<Project.Domin.User>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "لیست کاربران";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -38,38 +33,41 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Roles.RoleName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhonNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ActiveCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RegisterDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UserID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr id="row_@item.UserID">
+            <td>
+                @Html.DisplayFor(modelItem => item.Roles.RoleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhonNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActiveCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisterDate)
+            </td>
+            <td>
+                <a onclick="Delete(@item.UserID,'/Admin/Users/Delete/','حذف کاربر @item.UserName',' آیا از حذف این کاربر مطمئن هستید؟','error')" class="btn btn-danger">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+                @Html.ActionLink("ویرایش", "Edit", new { id = item.UserID }) |
+            </td>
+        </tr>
+    }
 
 </table>
+

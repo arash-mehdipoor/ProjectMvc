@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Project.Data.Context;
-using Project.Domin.Models;
 
 namespace ProjecMvcUI.Controllers
 {

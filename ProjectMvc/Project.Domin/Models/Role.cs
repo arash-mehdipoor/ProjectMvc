@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project.Domin.Models
+namespace Project.Domin
 {
    public class Role
     {

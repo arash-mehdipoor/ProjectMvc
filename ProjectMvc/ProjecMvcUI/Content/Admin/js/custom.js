@@ -41,3 +41,36 @@ $(function () {
     //End convert number
 
 });
+
+//Delete Row Hide
+function Delete(id,url,title="حذف", text="", icon="error") {
+    swal({
+        title: title,
+        text: text,
+        icon:icon,
+        buttons: true,
+        showCancelButton: true,
+        buttons: ["لغو", "حذف"],
+        showCancelButton: true,
+    }).then((result) => {
+        if (result) {
+            $.get(url+ id, function () {
+                $("#row_" + id).hide('slow');
+            });
+            swal(
+                'موفق',
+                'حذف با موفقیت صورت گرفت',
+                'success',
+            )
+        } else {
+            swal(
+                'ناموفق!',
+                'حذف ناموفق بود',
+                'warning',
+            
+            )
+        };
+ 
+    })
+}
+//End Delete Row Hide

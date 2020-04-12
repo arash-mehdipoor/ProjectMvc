@@ -445,8 +445,6 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Users\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Users\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
@@ -473,6 +471,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -522,11 +521,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Project.Data\Project.Data.csproj">
-      <Project>{503A77CD-B6B5-4FD4-9EB7-067D00A0F23B}</Project>
+      <Project>{503a77cd-b6b5-4fd4-9eb7-067d00a0f23b}</Project>
       <Name>Project.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Project.Domin\Project.Domin.csproj">
-      <Project>{78a3b007-3d0e-4fe1-aa07-0e48ffde3a2c}</Project>
+      <Project>{78A3B007-3D0E-4FE1-AA07-0E48FFDE3A2C}</Project>
       <Name>Project.Domin</Name>
     </ProjectReference>
   </ItemGroup>
