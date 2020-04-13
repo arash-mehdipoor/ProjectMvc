@@ -47,6 +47,10 @@ namespace ProjecMvcUI.Controllers
                     userRepository.save();
                     return Redirect("/");
                 }
+                else
+                {
+                    ModelState.AddModelError("Email", "شما با این ایمیل یا شماره موبایل قبلا ثبت نام کرده اید");
+                }
             }
             else
             {

@@ -31,6 +31,10 @@ namespace Project.Application
 
         [Display(Name = "شماره تماس")]
         [Required(ErrorMessage = "مقداری برای {0} وارد نمایید")]
+        [StringLength(11,ErrorMessage ="شماره تماس نمی تواند کمتر از 11 کاراکتر باشد",MinimumLength =11)]
+        [DataType(DataType.PhoneNumber)]
+
+
         public string PhonNumber { get; set; }
     }
 }
