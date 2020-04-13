@@ -3,7 +3,16 @@
 @{
     ViewBag.Title = "لیست کاربران";
 }
-
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-md-12">
+                <strong>
+                    <i class="glyphicon glyphicon-list"></i>
+                    لیست کاربران سایت
+                </strong>
+            </div>
+        </div>
+    </div>
 <table class="table">
     <tr>
         <th>
@@ -13,24 +22,15 @@
             @Html.DisplayNameFor(model => model.UserName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PhonNumber)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ActiveCode)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.IsActive)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RegisterDate)
-        </th>
-        <th></th>
+        <th>عملیات</th>
     </tr>
 
     @foreach (var item in Model)
@@ -43,28 +43,21 @@
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PhonNumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ActiveCode)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.IsActive)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RegisterDate)
-            </td>
-            <td>
-                <a onclick="Delete(@item.UserID,'/Admin/Users/Delete/','حذف کاربر @item.UserName',' آیا از حذف این کاربر مطمئن هستید؟','error')" class="btn btn-danger">
+                <a class="btn btn-danger btn-xs" onclick="Delete(@item.UserID,'/Admin/Users/Delete/','حذف کاربر @item.UserName',' آیا از حذف این کاربر مطمئن هستید؟','error')">
                     <i class="glyphicon glyphicon-trash"></i>
                 </a>
-                @Html.ActionLink("ویرایش", "Edit", new { id = item.UserID }) |
+                 <a href="/Admin/Users/Edit/@item.UserID" class="btn btn-warning btn-xs">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
             </td>
         </tr>
     }

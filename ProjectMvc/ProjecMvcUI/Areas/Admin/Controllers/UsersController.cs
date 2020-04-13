@@ -29,32 +29,6 @@ namespace ProjecMvcUI.Areas.Admin.Controllers
             var users = db.Users.Include(u => u.Roles);
             return View(users.ToList());
         }
-
-        // GET: Admin/Users/Create
-        //public ActionResult Create()
-        //{
-        //    ViewBag.RoleID = new SelectList(roleRepository.GetAllRole(), "RoleID", "RoleTitle");
-        //    return View();
-        //}
-
-        // POST: Admin/Users/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "UserID,RoleID,UserName,Password,Email,PhonNumber,ActiveCode,IsActive,RegisterDate")] User user)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Users.Add(user);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    ViewBag.RoleID = new SelectList(roleRepository.GetAllRole(), "RoleID", "RoleName", user.RoleID);
-        //    return View(user);
-        //}
-
         // GET: Admin/Users/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -102,15 +76,6 @@ namespace ProjecMvcUI.Areas.Admin.Controllers
 
 
         }
-
-        // POST: Admin/Users/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-           
-        //}
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

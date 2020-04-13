@@ -4041,3 +4041,9 @@ body {
     background: rgba(100, 100, 100, 0.13);
     margin: 20px 0;
 }
+.p-5 {
+    padding:30px 15px;
+}
+i {
+    vertical-align:middle;
+}

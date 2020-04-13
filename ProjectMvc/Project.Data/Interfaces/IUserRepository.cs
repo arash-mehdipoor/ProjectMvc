@@ -10,6 +10,7 @@ namespace Project.Data
     {
         IEnumerable<User> GetAllUser();
         User FindUserId(int userId);
+        bool AddUser(User user);
         bool Update(User user);
         bool Delete(User user);
         void save();

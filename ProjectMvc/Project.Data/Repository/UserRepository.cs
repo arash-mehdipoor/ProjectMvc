@@ -52,7 +52,19 @@ namespace Project.Data
             }
         }
 
+        public bool AddUser(User user)
+        {
+            try
+            {
+                db.Users.Add(user);
+                return true;
+            }
+            catch (Exception)
+            {
 
+                return false;
+            }
+        }
 
         public void save()
         {

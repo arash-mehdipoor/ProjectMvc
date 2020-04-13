@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
-<html>
+<html dir="rtl">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewBag.Title</title>
-    <link rel="stylesheet" href="/Content/assets/libs/bootstrap/css/bootstrap.min.css">
+    <link href="/Content/Admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Content/Admin/css/bootstrap-reset.css" rel="stylesheet">
     <link rel="stylesheet" href="/Content/assets/libs/material-design-iconic-font/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="/Content/assets/libs/jquery-ui/jquery-ui.min.css">
     <link rel="stylesheet" href="/Content/assets/libs/rslides/responsiveslides.css">
@@ -16,7 +17,7 @@
     <script src="/Content/assets/js/jquery-3.2.1.min.js"></script>
     <script src="/Content/assets/js/wow.min.js"></script>
     <script>
-              new WOW().init();
+        new WOW().init();
     </script>
 </head>
 
@@ -108,7 +109,7 @@
                                 </ul>
                             </nav>
                         </div>
-                        <a href="#" class="blueplay login">ورود</a> <a href="#" class="register">ثبت نام</a>
+                        <a href="#" class="blueplay login">ورود</a> <a href="/Account/Register/" class="register">ثبت نام</a>
                         <div class="cart">
                             <a href="#"><i class="zmdi zmdi-case zmdi-hc-lg"></i><span>2</span></a>
                             <div class="cart-container">
